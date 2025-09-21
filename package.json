@@ -12,6 +12,9 @@
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
     "@sentry/node": "^10.12.0",
+    "@sentry/react": "^10.12.0",
+    "@sentry/react-router": "^10.12.0",
+    "@sentry/tracing": "^7.120.4",
     "@syncfusion/ej2-react-buttons": "^31.1.17",
     "@syncfusion/ej2-react-charts": "^31.1.20",
     "@syncfusion/ej2-react-dropdowns": "^31.1.20",
@@ -25,6 +28,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.7.1",
+    "react-router-dom": "^7.9.1",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {

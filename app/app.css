@@ -34,7 +34,7 @@
 
 
 
-  /* --font-figtree: "Figtree", sans-serif;
+  --font-figtree: "Figtree", sans-serif;
   --font-inter: "Inter", sans-serif;
   --color-dark-100: #1f1f36;
   --color-dark-200: #141627;
@@ -61,7 +61,7 @@
   --color-navy-500: #026aa2;
   --color-red-500: #b93815;
   --color-red-50: #fff4ed;
-  --color-red-100: #ff543d; */
+  --color-red-100: #ff543d;
 
   --background-image-auth: url("/assets/images/auth-img.webp");
   --background-image-hero: url("/assets/images/hero-img.png");

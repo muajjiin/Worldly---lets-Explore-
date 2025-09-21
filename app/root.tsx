@@ -1,75 +1,45 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
-
-import type { Route } from "./+types/root";
+import React from "react";
+import { Outlet } from "react-router-dom"; // Use react-router-dom for basic routing
 import "./app.css";
 
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
+// Syncfusion license fix for Vite + CommonJS
+import pkg from "@syncfusion/ej2-base";
+const { registerLicense } = pkg;
+registerLicense(import.meta.env.VITE_SYNCFUSION_LICENSE_KEY);
 
+// Minimal Layout component
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
+        <title>Worldly App</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+        />
       </head>
       <body>
+        <h1>I hate you</h1>
         {children}
-        <ScrollRestoration />
-        <Scripts />
       </body>
     </html>
   );
 }
 
+// Minimal App component
 export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
+// Minimal error boundary
+export function ErrorBoundary({ error }: { error: unknown }) {
+  console.error(error);
   return (
     <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+      <h1>Oops! Something went wrong.</h1>
+      <p>{error instanceof Error ? error.message : "Unknown error"}</p>
     </main>
   );
 }
