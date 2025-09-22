@@ -1,37 +1,18 @@
-// auth.ts
-import { auth, db } from "./client";
-import { 
-  createUserWithEmailAndPassword as firebaseCreateUser, 
-  signInWithEmailAndPassword as firebaseSignIn, 
-  signOut as firebaseSignOut, 
-  User 
-} from "firebase/firebaseauthWrapper";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { auth } from "./client";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
-// 1. Sign up a new user
-export async function signUpUser(email: string, password: string, extraData?: object) {
-  const userCredential = await firebaseCreateUser(auth, email, password);
-  const user = userCredential.user;
+const provider = new GoogleAuthProvider();
 
-  // Optional: store extra data in Firestore
-  if (extraData) {
-    await setDoc(doc(db, "users", user.uid), extraData);
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    return result.user; // returns Firebase user
+  } catch (err) {
+    console.error("Google Sign-In error:", err);
+    throw err;
   }
+};
 
-  return user;
-}
-
-// 2. Login existing user
-export async function loginUser(email: string, password: string) {
-  const userCredential = await firebaseSignIn(auth, email, password);
-  return userCredential.user;
-}
-
-// 3. Logout user
-export async function logoutUser() {
-  await firebaseSignOut(auth);
-}
-
-// 4. Get current logged-in user
-export function getExistingUser(): User | null {
-  return
+export const logout = async () => {
+  await signOut(auth);
+};
