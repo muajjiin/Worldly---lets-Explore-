@@ -26,6 +26,8 @@ npm install
 
 Start the development server with HMR:
 
+
+
 ```bash
 npm run dev
 ```
@@ -83,3 +85,10 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 ---
 
 Built with ❤️ using React Router.
+
+
+  ## switching appwrite to firebase
+## need to fix the auth page with firebase
+ ## ui have some work to do
+   ## project temporary stopped
+ # BIG SORRY
