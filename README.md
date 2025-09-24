@@ -90,5 +90,4 @@ Built with ❤️ using React Router.
   ## switching appwrite to firebase
 ## need to fix the auth page with firebase
  ## ui have some work to do
-   ## project temporary stopped
- # BIG SORRY
+   
